@@ -1,23 +1,29 @@
-/* Midknight Global Style Sheet - Professional Refinement */
+/* Midknight Global Style Sheet - Launch Ready Version */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap');
 
+/* --- Color Palette and Variables --- */
 :root {
-    --color-primary: #0A0A0A;      /* Deep Midnight Black */
-    --color-secondary: #00FFC0;    /* MUI Tech Cyan/Green */
+    --color-primary: #040810;      /* Near-Black, Deep Midnight Blue */
+    --color-secondary: #00D1FF;    /* Tech Cyan/Blue Accent (MUI) */
     --color-text: #F0F0F0;         /* Off-White Text */
-    --color-accent-gold: #D4AF37;  /* Excellence/Apparel Accent */
-    --color-dark-surface: #1C1C1C; /* Darker card background */
+    --color-accent-gold: #FFC300;  /* Excellence/Apparel Gold */
+    --color-dark-surface: #101620; /* Section Backgrounds */
+    --color-surface-light: #1A2436; /* Card Backgrounds */
 }
 
-/* Base Styles & Typography */
+/* --- Base & Utility --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-primary);
     color: var(--color-text);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    line-height: 1.7;
     scroll-behavior: smooth;
 }
 
@@ -25,45 +31,31 @@ body {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 0;
 }
 
-/* Header & Hero Section */
-header {
-    background-color: var(--color-dark-surface);
-    color: white;
-    padding: 60px 0;
-    text-align: center;
-    border-bottom: 5px solid var(--color-secondary);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    animation: fadeInDown 1s ease-out;
-}
-
-header h1 {
-    font-size: 4em;
-    margin: 0;
-    letter-spacing: 8px;
-    font-weight: 900;
-}
-
-.motto {
-    font-size: 1.2em;
-    font-weight: 400;
+a {
     color: var(--color-secondary);
-    letter-spacing: 3px;
-    margin-top: 10px;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* General Sections */
-section {
-    padding: 60px 0;
-    border-bottom: 1px solid #333;
+a:hover {
+    color: var(--color-accent-gold);
+}
+
+/* --- Typography --- */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3.5em;
+    letter-spacing: 2px;
 }
 
 h2 {
+    font-family: 'Montserrat', sans-serif;
     color: var(--color-secondary);
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-size: 2.5em;
     font-weight: 700;
     position: relative;
@@ -72,58 +64,175 @@ h2 {
 h2::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 3px;
+    width: 80px;
+    height: 4px;
     background: var(--color-accent-gold);
-    margin: 10px auto 0;
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-#mission p {
-    font-size: 1.1em;
+
+/* --- 0. Navigation Bar --- */
+#navbar {
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    padding: 10px 0;
+}
+
+#navbar.scrolled {
+    background-color: rgba(16, 22, 32, 0.95); /* Semi-transparent dark surface */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--color-text);
+    letter-spacing: 1px;
+}
+
+.nav-logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.nav-links a {
+    margin-left: 30px;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-contact {
+    color: var(--color-accent-gold) !important;
+    border: 1px solid var(--color-accent-gold);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-contact:hover {
+    background-color: var(--color-accent-gold);
+    color: var(--color-primary) !important;
+}
+
+/* --- 0. Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    background: linear-gradient(rgba(4, 8, 16, 0.7), rgba(4, 8, 16, 0.9)), url('[PLACEHOLDER_BACKGROUND_IMAGE.jpg]'); /* Placeholder: Replace with high-res space/tech image */
+    background-size: cover;
+    background-position: center;
 }
 
-/* Division Cards with Animation */
+.hero-content {
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-motto {
+    color: var(--color-secondary);
+    font-size: 1.5em;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 209, 255, 0.4);
+}
+
+.btn-hero:hover {
+    background-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 209, 255, 0.6);
+}
+
+
+/* --- Sections --- */
+.section-content {
+    padding: 80px 0;
+}
+
+.dark-bg {
+    background-color: var(--color-dark-surface);
+}
+
+.mission-text {
+    font-size: 1.15em;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* --- 2. Division Grid --- */
 .division-grid {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 30px;
 }
 
 .card {
-    background-color: var(--color-dark-surface);
-    padding: 30px;
-    border-radius: 12px;
+    background-color: var(--color-surface-light);
+    padding: 35px;
+    border-radius: 10px;
     width: 30%;
     min-width: 300px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-    border-left: 4px solid var(--color-secondary);
-    animation: fadeInUp 0.8s ease-out both;
-    opacity: 0; /* Starting opacity for animation */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-top: 5px solid var(--color-secondary);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Staggering the load animation */
 .division-grid .card:nth-child(1) { animation-delay: 0.2s; }
 .division-grid .card:nth-child(2) { animation-delay: 0.4s; }
 .division-grid .card:nth-child(3) { animation-delay: 0.6s; }
 
-
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    border-left-color: var(--color-accent-gold);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border-top-color: var(--color-accent-gold);
 }
 
 .card h3 {
     color: white;
-    border-bottom: 1px solid #383838;
-    padding-bottom: 15px;
-    margin-top: 0;
-    font-size: 1.6em;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .product {
@@ -133,7 +242,7 @@ h2::after {
     font-size: 1.1em;
 }
 
-/* Leadership Grid */
+/* --- 3. Leadership Grid --- */
 .leadership-grid {
     display: flex;
     justify-content: center;
@@ -143,89 +252,87 @@ h2::after {
 }
 
 .leader {
-    background-color: #282828;
-    padding: 20px;
-    border-radius: 8px;
-    width: 220px;
+    background-color: var(--color-surface-light);
+    padding: 20px 10px;
+    border-radius: 5px;
+    width: 240px;
     text-align: center;
     border: 1px solid #333;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
+    transition: border-color 0.3s;
 }
 
 .leader:hover {
-    background-color: #333;
+    border-color: var(--color-secondary);
 }
 
 .leader h4 {
     margin: 0 0 5px 0;
     color: var(--color-secondary);
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 400;
 }
 
 .leader p {
     margin: 0;
     font-weight: 700;
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: var(--color-text);
 }
 
 .leader.accent {
-    background-color: #383838;
-    border: 2px solid var(--color-accent-gold); /* Highlight the Strategist */
+    border: 2px solid var(--color-accent-gold); /* Strategist Highlight */
 }
 
-/* Button Styling */
-button {
-    display: block;
-    margin: 40px auto;
-    padding: 15px 30px;
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    border: none;
-    border-radius: 50px; /* Pill shape */
-    cursor: pointer;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 192, 0.4);
+.board-note {
+    text-align: center;
+    margin-top: 30px;
+    font-style: italic;
+    color: #999;
 }
 
-button:hover {
-    background-color: var(--color-text);
-    color: var(--color-primary);
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 255, 192, 0.6);
+
+/* --- 4. Contact Section --- */
+.contact-section {
+    text-align: center;
 }
 
-/* Footer */
+.contact-section h2 {
+    color: var(--color-accent-gold);
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.large-btn {
+    font-size: 1.1em;
+    padding: 18px 40px;
+}
+
+/* --- Footer --- */
 footer {
     text-align: center;
-    padding: 30px 0;
+    padding: 40px 0;
     background-color: var(--color-dark-surface);
     color: #888;
     font-size: 0.9em;
     border-top: 1px solid #333;
 }
 
-
-/* --- Keyframe Animations --- */
-
-/* Fade In Down: For Header */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.footer-note {
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #555;
 }
 
-/* Fade In Up: For Cards/Divisions */
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -237,22 +344,219 @@ footer {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .nav-links a {
+        margin-left: 15px;
+    }
+    h1 {
         font-size: 2.5em;
     }
-
     .division-grid {
         flex-direction: column;
         align-items: center;
     }
-
     .card {
-        width: 80%;
+        width: 90%;
     }
+    .leader {
+        width: 45%;
+    }
+}
+@media (max-width: 600px) {
+    .nav-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-links {
+        margin-top: 10px;
+    }
+    .nav-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    .hero-motto {
+        font-size: 1.2em;
+        letter-spacing: 2px;
+    }
+}
+/* --- ORACLE AI INTERFACE STYLING --- */
+.oracle-interface {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
-    .leadership-grid {
-        gap: 15px;
-    }
+#oracle-input {
+    width: 50%;
+    max-width: 600px;
+    padding: 15px 20px;
+    border: 2px solid var(--color-secondary);
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#oracle-input:focus {
+    border-color: var(--color-accent-gold);
+}
+
+#oracle-submit {
+    /* Uses the existing .btn-hero style */
+    margin: 0;
+    font-size: 1em;
+}
+
+.response-box {
+    background-color: var(--color-surface-light);
+    border-left: 5px solid var(--color-secondary);
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: left;
+    border-radius: 5px;
+    min-height: 80px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.response-box p {
+    margin: 0;
+    font-family: monospace;
+    color: var(--color-text);
+    font-size: 1.1em;
+}
+/* --- FLOATING CHAT ICON STYLING --- */
+#oracle-chat-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-accent-gold); /* Gold for high importance */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 195, 0, 0.6);
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 999;
+}
+
+#oracle-chat-icon:hover {
+    background-color: #FFD700;
+    transform: scale(1.1);
+}
+
+/* Optional: Animation for visibility */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 195, 0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 195, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 195, 0, 0); }
+}
+#oracle-chat-icon {
+    animation: pulse 2s infinite;
+}
+
+/* --- CHAT WINDOW STYLING (Hides the original interface) --- */
+.oracle-interface-window {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    max-height: 500px;
+    background-color: var(--color-surface-light);
+    border: 2px solid var(--color-secondary);
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
+    z-index: 998;
+    display: none; /* Starts hidden */
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideInUp 0.3s ease-out;
+}
+
+.chat-header {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 10px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-close {
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.chat-body {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 85%;
+    font-size: 0.9em;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.user-message {
+    background-color: #00D1FF;
+    color: var(--color-primary);
+    align-self: flex-end;
+}
+
+.oracle-message {
+    background-color: #333;
+    color: var(--color-text);
+    align-self: flex-start;
+    border-left: 3px solid var(--color-accent-gold);
+}
+
+.chat-input-area {
+    padding: 10px;
+    border-top: 1px solid #333;
+    display: flex;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    margin-right: 5px;
+}
+
+#chat-send {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hide the original Oracle section since we are moving the logic to the chatbot */
+#oracle-ai {
+    display: none !important; 
 }
