@@ -1,4 +1,4 @@
-/* Midknight Global Style Sheet - Launch Ready Version */
+/* Midknight Global Style Sheet - Launch Ready Version (Final) */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap');
 
@@ -25,12 +25,19 @@ body {
     color: var(--color-text);
     line-height: 1.7;
     scroll-behavior: smooth;
+    
+    /* --- NEW GLOBAL BACKGROUND STYLING --- */
+    background-image: url('midknight_bg.png'); /* Reference to your saved image */
+    background-attachment: fixed; /* Makes the background stay still while content scrolls */
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
+    /* Ensure content has some padding */
 }
 
 a {
@@ -84,7 +91,7 @@ h2::after {
 }
 
 #navbar.scrolled {
-    background-color: rgba(16, 22, 32, 0.95); /* Semi-transparent dark surface */
+    background-color: rgba(4, 8, 16, 0.98); /* Near-opaque dark background when scrolling */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
 }
@@ -138,7 +145,9 @@ h2::after {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(4, 8, 16, 0.7), rgba(4, 8, 16, 0.9)), url('[PLACEHOLDER_BACKGROUND_IMAGE.jpg]'); /* Placeholder: Replace with high-res space/tech image */
+    
+    /* Overlay for readability, since the main background is busy */
+    background: rgba(4, 8, 16, 0.8); 
     background-size: cover;
     background-position: center;
 }
@@ -181,10 +190,12 @@ h2::after {
 /* --- Sections --- */
 .section-content {
     padding: 80px 0;
+    /* Opacity overlay for content sections to ensure text readability over busy background */
+    background-color: rgba(4, 8, 16, 0.95); 
 }
 
 .dark-bg {
-    background-color: var(--color-dark-surface);
+    background-color: rgba(16, 22, 32, 0.95);
 }
 
 .mission-text {
@@ -327,108 +338,11 @@ footer {
     color: #555;
 }
 
-/* --- Keyframe Animations --- */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* --- ORACLE CHATBOT STYLING (Hides the original interface) --- */
+#oracle-ai {
+    display: none !important; 
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 992px) {
-    .nav-links a {
-        margin-left: 15px;
-    }
-    h1 {
-        font-size: 2.5em;
-    }
-    .division-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 90%;
-    }
-    .leader {
-        width: 45%;
-    }
-}
-@media (max-width: 600px) {
-    .nav-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .nav-links {
-        margin-top: 10px;
-    }
-    .nav-links a {
-        display: block;
-        margin: 5px 0;
-    }
-    .hero-motto {
-        font-size: 1.2em;
-        letter-spacing: 2px;
-    }
-}
-/* --- ORACLE AI INTERFACE STYLING --- */
-.oracle-interface {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-#oracle-input {
-    width: 50%;
-    max-width: 600px;
-    padding: 15px 20px;
-    border: 2px solid var(--color-secondary);
-    border-radius: 5px;
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    font-size: 1em;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-#oracle-input:focus {
-    border-color: var(--color-accent-gold);
-}
-
-#oracle-submit {
-    /* Uses the existing .btn-hero style */
-    margin: 0;
-    font-size: 1em;
-}
-
-.response-box {
-    background-color: var(--color-surface-light);
-    border-left: 5px solid var(--color-secondary);
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 800px;
-    text-align: left;
-    border-radius: 5px;
-    min-height: 80px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.response-box p {
-    margin: 0;
-    font-family: monospace;
-    color: var(--color-text);
-    font-size: 1.1em;
-}
 /* --- FLOATING CHAT ICON STYLING --- */
 #oracle-chat-icon {
     position: fixed;
@@ -436,7 +350,7 @@ footer {
     right: 30px;
     width: 60px;
     height: 60px;
-    background-color: var(--color-accent-gold); /* Gold for high importance */
+    background-color: var(--color-accent-gold); 
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -462,7 +376,7 @@ footer {
     animation: pulse 2s infinite;
 }
 
-/* --- CHAT WINDOW STYLING (Hides the original interface) --- */
+/* --- CHAT WINDOW STYLING --- */
 .oracle-interface-window {
     position: fixed;
     bottom: 100px;
@@ -474,7 +388,7 @@ footer {
     border-radius: 10px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
     z-index: 998;
-    display: none; /* Starts hidden */
+    display: none; 
     flex-direction: column;
     overflow: hidden;
     animation: slideInUp 0.3s ease-out;
@@ -556,7 +470,61 @@ footer {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Hide the original Oracle section since we are moving the logic to the chatbot */
-#oracle-ai {
-    display: none !important; 
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .nav-links a {
+        margin-left: 15px;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    .division-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+    .leader {
+        width: 45%;
+    }
+}
+@media (max-width: 600px) {
+    .nav-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-links {
+        margin-top: 10px;
+    }
+    .nav-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    .hero-motto {
+        font-size: 1.2em;
+        letter-spacing: 2px;
+    }
+    .oracle-interface-window {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+    }
 }
